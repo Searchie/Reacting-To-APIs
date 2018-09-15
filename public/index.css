@@ -1,0 +1,9 @@
+.card {
+    width: 18rem;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(1fr, 4);
+    grid-template-rows: repeat(1fr);
+}
