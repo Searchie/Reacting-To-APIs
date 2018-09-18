@@ -1,9 +1,11 @@
 .card {
-    width: 18rem;
+    height: 18rem;
+    width: 14rem;
 }
 
-.grid {
-    display: grid;
-    grid-template-columns: repeat(1fr, 4);
-    grid-template-rows: repeat(1fr);
+.card-text {
+    font-size: 11px;
+    margin-bottom: .5rem;
+    height: 10rem;
+    overflow-y: auto;
 }

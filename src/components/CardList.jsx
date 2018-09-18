@@ -13,9 +13,20 @@ const CardList = (props) => {
         );
     });
 
+    let dataType = '';
+
+    switch (props.dataType) {
+        case 'movies': dataType = 'movies'
+        break;
+        case 'people': dataType = 'people'
+        break;
+        default: dataType = 'movies'
+    }
+
     return(
-        <div className="grid">
-            {listItems}
+        <div className="container">
+            <div className="border-bottom"><h3>{dataType}</h3></div>
+            <div className="row justify-content-center">{listItems}</div>
         </div >
     )
 }
