@@ -9,3 +9,7 @@
     height: 10rem;
     overflow-y: auto;
 }
+
+.btn-group {
+    margin-top: 1rem;
+}

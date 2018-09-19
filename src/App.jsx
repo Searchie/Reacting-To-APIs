@@ -19,27 +19,28 @@ class App extends Component {
         this.getMovies();
     }
 
-    getMovies() {
+    getMovies = () => {
         return(
             fetch("https://ghibliapi.herokuapp.com/films")
             .then(res => res.json())
             .then(obj => this.setState({returnedData: obj}))
-            .then(this.setState({dataType: 'movies'}))
+            .then(() => this.setState({dataType: 'Movies'}))
+            .then(() => this.handleGetMovies)
         )
     }
 
-    getPeople() {
+    getPeople = () => {
         return(
             fetch("https://ghibliapi.herokuapp.com/people")
             .then(res => res.json())
             .then(obj => this.setState({returnedData: obj}))
-            .then(this.setState({dataType: 'people'}))
+            .then(() => this.setState({dataType: 'People'}))
+            .then(() => this.handleGetMovies)
         )
     }
 
     handleGetMovies = () => {
         this.setState({init: true})
-        setTimeout(() => console.log(this.state.init), 1000);
     }
 
     render() {
@@ -62,10 +63,21 @@ class App extends Component {
         else {
             return(
                 <React.Fragment>
-                <div>
                     <Header />
-                    <button className="btn btn-primary">Switch Info</button> 
-                </div>
+                    <div className="btn-group btn-group-toggle d-flex justify-content-center" data-toggle="buttons">
+                        <label 
+                            className="btn btn-secondary active"
+                            onClick={this.getMovies}
+                        >
+                            <input type="radio" name="options" id="movieOption" autoComplete="off" defaultChecked/>Movies
+                        </label>
+                        <label 
+                            className="btn btn-secondary"
+                            onClick={this.getPeople}
+                        >
+                            <input type="radio" name="options" id="peopleOption" autoComplete="off"/>People
+                        </label>
+                    </div>
                     <CardList
                         items={this.state.returnedData}
                         dataType={this.state.dataType}
